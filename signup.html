@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-title">Create an Account</h2>
+            <form id="signupForm" class="form">
+                <div class="input-field">
+                    <input type="email" id="signupEmail" placeholder=" " required>
+                    <label for="signupEmail">Email</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signupPassword" placeholder=" " required>
+                    <label for="signupPassword">Password</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signupConfirmPassword" placeholder=" " required>
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                </div>
+                <p id="passwordError" class="error-message">Passwords do not match!</p>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p class="form-footer">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+
+            if (password !== confirmPassword) {
+                passwordError.style.display = 'block';
+                return;
+            }
+
+            passwordError.style.display = 'none';
+
+            // Assume sign-up validation happens here
+
+            // Set isLoggedIn in localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+
+            // Redirect to home page
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
